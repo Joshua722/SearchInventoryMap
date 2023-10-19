@@ -15,7 +15,7 @@ public class SearchInventoryMap {
         for (Product p : inventory.values()) {
             System.out.printf("id: %d %s - Price: $%.2f\n",
                     p.getId(), p.getName(), p.getPrice());
-        }
+            }
 
         while (true) {
             System.out.print("What item are you interested in? ");
@@ -25,24 +25,22 @@ public class SearchInventoryMap {
         Product matchedProduct = inventory.get(productName);
         if (matchedProduct == null) {
             System.out.print("We don't carry that product");
-            return;
-        }
+                break;
+            }
             System.out.printf("We carry %s and the price is $%.2f", matchedProduct.getName(), matchedProduct.getPrice());
         //if user wants to find another item
 
             System.out.println("\nDo you want to find another item? Yes or No: ");
-            String userSearch = scanner.next().toLowerCase();
-            if (userSearch.equals("yes")) {
-                System.out.println("Which product do you want? ");
-                System.out.printf("Here is item %s and the price is  $%.2f,", matchedProduct.getName(), matchedProduct.getPrice());
-            } else {
-                System.exit(0);
+        String userSearch = scanner.nextLine().toLowerCase().trim();
+            if (userSearch.equals("yes")) {}
+
+            else {
+                break;
             }
-            break;
-
         }
-
-        }
+            scanner.close();
+            System.exit(0);
+    }
 
     public static void loadInventory() {
         String input;
